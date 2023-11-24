@@ -38,8 +38,8 @@ def createImg():
     img = Image.new(mode="RGB", size=(width, height), color=bg_color)
     # 用img建立draw物件
     draw = ImageDraw.Draw(img)
-    font = ImageFont.truetype(font="arial.ttf", size=60)
-    for i in range(5):
+    font = ImageFont.truetype(font="arial.ttf", size=85)
+    for i in range(4):
         # 隨機生成數字
         random_txt = getRandomChar()
         txt_color = getRandomColor()
@@ -47,7 +47,7 @@ def createImg():
         while txt_color == bg_color:
             txt_color = getRandomColor()
         # draw文字
-        draw.text((10 + 40 * i, 7), text=random_txt, fill=txt_color, font=font)
+        draw.text((10 + 50 * i, 5), text=random_txt, fill=txt_color, font=font)
     # 畫干擾線及干擾點
     drawLine(draw)
     drawPoint(draw)
