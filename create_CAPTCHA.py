@@ -25,7 +25,7 @@ def drawLine(draw):
         draw.line((x1, y1, x2, y2), fill=getRandomColor())
 
 def drawPoint(draw):
-    """ 在寬高範圍內隨機生成座標點 """
+    """ 在寬高範圍內隨機生成雜訊點 """
     for i in range(50):
         x = random.randint(0, width)
         y = random.randint(0, height)
