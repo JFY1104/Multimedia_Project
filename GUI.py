@@ -16,7 +16,7 @@ from PIL import Image, ImageTk
 # 建立主視窗
 main = tk.Tk()
 main.title('驗證碼解析')
-main.geometry('300x200')
+main.geometry('420x220')
 
 frame1 = tk.Frame( main).pack()
 frame2 = tk.Frame( main).pack()
@@ -27,8 +27,8 @@ parse_test.set('解析')
 parse = tk.Button( frame1, textvariable=parse_test, padx=5, pady=5).pack( fill='x')
 
 # 建立圖片放置位置
-before_img = tk.Label( frame2, background='yellow', text='驗證前').pack( side='left', fill='both', expand=1)
-after_img = tk.Label( frame2, background='green', text='驗證後').pack( side='left', fill='both', expand=1)
+before_img = tk.Label( frame2, background='yellow', text='驗證前', font=('15')).pack( side='top', fill='both', expand=1)
+after_img = tk.Label( frame2, background='green', text='驗證後', font=('15')).pack( side='top', fill='both', expand=1)
 
 # tkinter執行
 main.mainloop()
