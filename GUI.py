@@ -16,7 +16,7 @@ from PIL import Image, ImageTk
 # 建立主視窗
 main = tk.Tk()
 main.title('驗證碼解析')
-main.geometry('420x220')
+main.geometry('210x220')
 
 frame1 = tk.Frame( main).pack()
 frame2 = tk.Frame( main).pack()
