@@ -1,8 +1,24 @@
 import cv2
 import numpy as np
+import tensorflow as tf
+from tensorflow import keras
 
+
+def use_model(img):
+    resize_img = cv2.resize(img, (28, 28))
+    cv2.imshow("win", resize_img)
+    reshape_array = resize_img.flatten()
+    reshape_array = np.expand_dims(reshape_array, axis=0)
+    reshape_array = reshape_array.astype(np.float32) / 255
+    # print(reshape_array)
+    predictions = model.predict(reshape_array)
+    predicted_class_index = np.argmax(predictions)
+    print(predicted_class_index)
+
+
+model = keras.models.load_model("num_model.h5")
 # 直接以灰階圖讀取img
-ori_img = cv2.imread("test4.png", 0)
+ori_img = cv2.imread("test3.png", 0)
 img = ori_img
 # 將灰階圖的img_array變成one dimension
 new_np_array = img.flatten()
@@ -46,10 +62,14 @@ for i in range(4):
     top4_areas.append(contours[index[i]])
     # print(cv2.contourArea(top4_areas[-1]))
 
+
 # 利用boundingrect得到的x,y,w,h 傳進rectangle中並畫框
+
 for each_num_contours in top4_areas:
-	x,y,w,h = cv2.boundingRect(each_num_contours)
-	cv2.rectangle(img,[x,y],[x+w,y+h],2)
+    x, y, w, h = cv2.boundingRect(each_num_contours)
+    cv2.rectangle(img, [x, y], [x + w, y + h], 2)
+    reconize_img = img[y : y + h, x : x + w]
+    use_model(reconize_img)
 
 
 cv2.imshow("windows", img)
