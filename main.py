@@ -12,8 +12,9 @@ def rectangle2square(img):
     cv2.imshow("windows2",white_img)
 
 def use_model(img):
-    resize_img = cv2.resize(img, (28, 28))
-    cv2.imshow("win", resize_img)
+    resize_img = rectangle2square(img)
+    resize_img = cv2.resize(resize_img, (28, 28))
+    # cv2.imshow("win", resize_img)
     reshape_array = resize_img.flatten()
     reshape_array = np.expand_dims(reshape_array, axis=0)
     reshape_array = reshape_array.astype(np.float32) / 255
