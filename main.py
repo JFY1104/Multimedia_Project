@@ -2,7 +2,14 @@ import cv2
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras
-
+def rectangle2square(img):
+    maxside = max(img.shape[0],img.shape[1])
+    white_img = np.zeros((maxside,maxside,1),np.uint8)
+    white_img.fill(255)
+    for x in range(img.shape[0]):
+        for y in range(img.shape[1]):
+            white_img[x,y] = img[x,y]
+    cv2.imshow("windows2",white_img)
 
 def use_model(img):
     resize_img = cv2.resize(img, (28, 28))
