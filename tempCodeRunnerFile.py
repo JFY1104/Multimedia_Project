@@ -1,2 +1,2 @@
 
-#     # 呼叫create_CAPTCH.py
+        before_img.config( image=None)
