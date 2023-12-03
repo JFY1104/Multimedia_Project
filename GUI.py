@@ -27,9 +27,9 @@ def create():
 def result():
     global img3
     
-    img3 = Image.open('test1.png')
-    # img3 = main.img
-    # img3 = Image.open(main.img)
+    # img3 = Image.open('test1.png')
+    main
+    img3 = Image.open(main.img)
     img3 = ImageTk.PhotoImage( img3)
 
     after_img.configure( image=img3)
