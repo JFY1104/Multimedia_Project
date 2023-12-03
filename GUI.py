@@ -5,47 +5,51 @@ import numpy as np
 import glob
 import cv2
 import create_CAPTCHA
-# import main
+import main
+
+def delete():
+    # 將after_img中圖片刪除
+    after_img.configure( image=None)
+    after_img.update_idletasks
+    before_img.configure( image=None)
+    before_img.update_idletasks
+
+def create():
+    global img2
+    # 取產生驗證碼圖片
+    create_CAPTCHA.createImg()
+    img2 = Image.open('test.png')
+    img2 = ImageTk.PhotoImage( img2)
+
+    # 投影出圖片
+    before_img.configure( image=img2)
+
+def result():
+    global img3
+    
+    img3 = Image.open('test1.png')
+    # img3 = main.img
+    # img3 = Image.open(main.img)
+    img3 = ImageTk.PhotoImage( img3)
+
+    after_img.configure( image=img3)
 
 def press_button():
     global img2,img3
-
-    # def empty_img():
-    #     # 建立底層畫面
-    #     img = np.zeros(( 100, 210, 3), dtype='uint8')
-    #     img = Image.fromarray( img)
-    #     img = ImageTk.PhotoImage( img)
-    #     return img
     
     if parse_text.get() == '產圖':
         parse_text.set('解析')
 
-        # 將after_img中圖片刪除
-        after_img.configure( image=None)
-        before_img.configure( image=None)
-        
-        # img = empty_img()
-        # img = ImageTk.PhotoImage( img)
-        # after_img.config( image=img)
+        delete()
 
-        # 取產生驗證碼圖片
-        img2 = Image.open('test1.png')
-        # img2 = create_CAPTCHA.createImg()
-        img2 = ImageTk.PhotoImage( img2)
-
-        # 投影出圖片
-        before_img.configure( image=img2)
-        
+        # 建立驗證碼
+        create()
     else:
         parse_text.set('產圖')
 
         # 產生解析驗證碼結果
+        result()
 
-        # result_img()
-        img3 = Image.open('test2.png')
-        img3 = ImageTk.PhotoImage( img3)
-
-        after_img.configure( image=img3)
 
 
 
@@ -65,9 +69,8 @@ after_img.place( relx=0, rely=0.4, relheight=0.4, relwidth=1.0)
 parse_text = tk.StringVar()
 parse_text.set('產圖')
 parse = tk.Button( root, textvariable=parse_text, padx=5, pady=5, font=('15'))
-parse.config( command=lambda: press_button())
+parse.config( command=press_button)
 parse.place( relx=0.5, rely=0.9, anchor='center')
-
 
 # 分割線
 sep1 = ttk.Separator( root, orient='horizontal').place( rely=0.4, relwidth=1)

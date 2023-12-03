@@ -1,2 +1,2 @@
 
-        before_img.config( image=None)
+    # img3 = main.img
