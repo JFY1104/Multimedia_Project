@@ -2,15 +2,15 @@ import cv2
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras
-def rectangle2square(img):
-    maxside = max(img.shape[0],img.shape[1])
-    white_img = np.zeros((maxside,maxside,1),np.uint8)
-    white_img.fill(255)
-    for x in range(img.shape[0]):
-        for y in range(img.shape[1]):
-            white_img[x,y] = img[x,y]
-    print(white_img.shape)
-    cv2.imshow("windows2",white_img)
+# def rectangle2square(img):
+#     maxside = max(img.shape[0],img.shape[1])
+#     white_img = np.zeros((maxside,maxside,1),np.uint8)
+#     white_img.fill(255)
+#     for x in range(img.shape[0]):
+#         for y in range(img.shape[1]):
+#             white_img[x,y] = img[x,y]
+#     print(white_img.shape)
+#     cv2.imshow("windows2",white_img)
 
 # def use_model(img):
 #     resize_img = rectangle2square(img)
@@ -27,7 +27,7 @@ def rectangle2square(img):
 # model = keras.models.load_model("num_model.h5")
 
 # 直接以灰階圖讀取img
-ori_img = cv2.imread("test1.png", 0)
+ori_img = cv2.imread("test.png", 0)
 img = ori_img
 # 將灰階圖的img_array變成one dimension
 new_np_array = img.flatten()
@@ -77,8 +77,8 @@ for i in range(4):
 for each_num_contours in top4_areas:
     x, y, w, h = cv2.boundingRect(each_num_contours)
     cv2.rectangle(img, [x, y], [x + w, y + h], 2)
-    reconize_img = img[y : y + h, x : x + w]
-    reconize_img = rectangle2square(reconize_img)
+    # reconize_img = img[y : y + h, x : x + w]
+    # reconize_img = rectangle2square(reconize_img)
     # use_model(reconize_img)
 
 
