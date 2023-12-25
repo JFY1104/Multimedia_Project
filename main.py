@@ -1,7 +1,8 @@
 import cv2
 import numpy as np
-import tensorflow as tf
-from tensorflow import keras
+# import tensorflow as tf
+# from tensorflow import keras
+
 # def rectangle2square(img):
 #     maxside = max(img.shape[0],img.shape[1])
 #     white_img = np.zeros((maxside,maxside,1),np.uint8)
