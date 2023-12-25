@@ -40,8 +40,8 @@ class control:
         img = ImageTk.PhotoImage(img)                           # 轉換成tkinter可以使用之圖片
 
         # 在create_output標籤輸出圖片
-        self.create_output.configure(image=img)
-        self.create_output.image = img
+        self.create_output.configure(image=img)                 # 將create_label中的圖片設為none
+        self.create_output.image = img                          # 確保刪除
 
     '''輸出解析後的結果圖'''
     def result(self):
