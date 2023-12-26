@@ -15,7 +15,7 @@ class control:
 
         # 建立標籤顯示驗證圖
         self.create_output = ttk.Label(self.main)
-        self.create_output.place(relx=0, rely=0.0, relwidth=0.5, relheight=0.8)                             # 位置設定(視窗內的相對位置)
+        self.create_output.place(relx=0, rely=0.0, relwidth=0.5, relheight=0.8)                             # 排版設定(視窗內的相對位置)
 
         # 建立標籤顯示結果圖
         self.result_output = ttk.Label(self.main)
@@ -40,8 +40,8 @@ class control:
         img = ImageTk.PhotoImage(img)                           # 轉換成tkinter可以使用之圖片
 
         # 在create_output標籤輸出圖片
-        self.create_output.configure(image=img)                 # 將create_label中的圖片設為none
-        self.create_output.image = img                          # 確保刪除
+        self.create_output.configure(image=img)                 # 將create_label中的圖片設為img
+        self.create_output.image = img
 
     '''輸出解析後的結果圖'''
     def result(self):
@@ -58,16 +58,17 @@ class control:
     def press_button(self):
         if self.parse_text.get() == '產圖':
             self.parse_text.set('解析')                         # 置換按鈕內內容
+
             # 將輸出結果之欄位清空
-            self.result_output.configure(image=None)
-            self.result_output.image = None
-            self.create()                                       # 驗證碼
+            self.result_output.configure(image=None)            # 將圖片從視窗中移除
+            self.result_output.image = None                     # 徹底移除圖片，確保能完全達到移除圖片的效果，否則仍可能繼續顯示圖片
+            self.create()                                       # 驗證碼，呼叫create函數
         else:
             self.parse_text.set('產圖')
-            self.result()                                       # 解析驗證碼結果
+            self.result()                                       # 解析驗證碼結果，呼叫result函數
 
 if __name__ == "__main__":
     root = tk.Tk()
-    control(root)
+    control(root)                                               # 呼叫主程式control
     root.mainloop()
 
